@@ -1,37 +1,51 @@
 package com.jdominguez.runner;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import com.jdominguez.configuration.Configuration;
 import com.jdominguez.process.FileProcess;
+import com.jdominguez.process.FileProcessProperties;
 import com.jdominguez.utils.StringUtils;
 
 /**
  * @author jdominguez
  */
 public class FileRunner extends Thread{
-	final static Logger log = LogManager.getLogger(FileRunner.class);
 
 	/**
 	 * Process that will be executed for every archive
 	 */
 	private FileProcess process;
+	private FileProcessProperties properties;
 
 	/**
 	 * Basic constructor
 	 * @param process Process that will be executed
+	 * @throws ClassNotFoundException 
+	 * @throws SecurityException 
+	 * @throws NoSuchMethodException 
+	 * @throws InvocationTargetException 
+	 * @throws IllegalArgumentException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
-	public FileRunner(FileProcess process) {
+	public FileRunner(FileProcessProperties properties) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
 		super();
-		this.process = process;
+		this.properties = properties;
+		createProcessInstance();
+	}
+	
+	private void createProcessInstance() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
+		Class<? extends FileProcess> clazz = (Class<? extends FileProcess>) Class.forName(properties.getClazz());
+		this.process = clazz.getConstructor().newInstance();
 	}
 
 	@Override
 	public void run() {
 		super.run();
-		for (String url : process.getRootFiles()) {
+		for (String url : properties.getRootFiles()) {
 			processURL(url);
 		}
 	}
@@ -42,7 +56,7 @@ public class FileRunner extends Thread{
 			processArchive(mainFile);
 			process.finallyProcess();
 		} else {
-			log.error("The url " + url + " doesn't exist");
+			System.out.println("The url " + url + " doesn't exist");
 		}
 	}
 	private void processArchive(File file){
@@ -58,7 +72,7 @@ public class FileRunner extends Thread{
 	private void processDirectory(File parent){
 		process.preProcessDirectory(parent);
 
-		if(!process.isRecursive())
+		if(!properties.isRecursive())
 			if(parent.listFiles() != null) 
 				for(File children : parent.listFiles())
 					processArchive(children);
@@ -69,6 +83,6 @@ public class FileRunner extends Thread{
 		process.processFile(file);
 	}
 	private boolean isExcluded(File file) {
-		return StringUtils.inContained(file.getName(), process.getExcludedFiles());
+		return StringUtils.inContained(file.getName(), properties.getIgnoredPatterns());
 	}
 }

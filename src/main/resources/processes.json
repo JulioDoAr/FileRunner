@@ -1,0 +1,22 @@
+[ {
+  "name" : "defaultConfig",
+  "clazz" : "",
+  "rootFiles" : [],
+  "ignoredPatterns" : [],
+  "recursive" : false
+}, {
+  "name" : "proceso1",
+  "clazz" : "com.jdominguez.process.FileProcessExample",
+  "rootFiles" : [ "C:\\temp" ],
+  "ignoredPatterns" : [],
+  "recursive" : true
+}, {
+  "name" : "proceso2",
+  "clazz" : "com.jdominguez.process.FileProcessExample",
+  "rootFiles" : [ "C:\\temp" ]
+}, {
+  "name" : "proceso3",
+  "clazz" : "com.jdominguez.process.FileProcessExample",
+  "rootFiles" : [ "C:\\temp" ],
+  "ignoredPatterns" : [ ".jpg" ]
+} ]

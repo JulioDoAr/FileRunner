@@ -10,19 +10,6 @@ import java.io.File;
 public abstract class FileProcess {
 	
 	/**
-	 * List of archives that will be traveled
-	 */
-	protected String[] rootFiles = {};
-	/**
-	 * List of patterns that will be excluded
-	 */
-	protected String[] excludedFiles = {};
-	/**
-	 * Flag if it is recursive. </br>Default = false
-	 */
-	protected boolean recursive = false;
-	
-	/**
 	 * Generic constructor
 	 */
 	public FileProcess() {}
@@ -47,22 +34,4 @@ public abstract class FileProcess {
 	 */
 	public abstract void finallyProcess();
 
-	public String[] getRootFiles() {
-		return rootFiles;
-	}
-	public void setRootFiles(String[] rootFiles) {
-		this.rootFiles = rootFiles;
-	}
-	public String[] getExcludedFiles() {
-		return excludedFiles;
-	}
-	public void setExcludedFiles(String[] excludedFiles) {
-		this.excludedFiles = excludedFiles;
-	}
-	public boolean isRecursive() {
-		return recursive;
-	}
-	public void setRecursive(boolean recursive) {
-		this.recursive = recursive;
-	}
 }

@@ -1,9 +1,12 @@
 package com.jdominguez.runner;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
+import com.jdominguez.configuration.Configuration;
 import com.jdominguez.jsonparser.JsonParser;
 import com.jdominguez.process.FileProcess;
+import com.jdominguez.process.FileProcessProperties;
 
 /**
  * Executor of processes
@@ -18,12 +21,18 @@ public class FileRunnerExecutor {
 	 * Create a new instance of the process of the parameter and runs it
 	 * @param type Type of process to execute
 	 */
-	public synchronized static void executeProcess(Class<? extends FileProcess> type) {
+	public synchronized static void executeProcess(String name) {
+		executeProcess(name, new Configuration());
+	}
+
+	public synchronized static void executeProcess(String name, Configuration conf) {
 		waitProces();
 		try {
-			fileRunner = new FileRunner(JsonParser.getInstance().toObject(type));
+			JsonParser parser = new JsonParser(conf);
+			FileProcessProperties properties = parser.loadProperties(name);
+			fileRunner = new FileRunner(properties);
 			fileRunner.start();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
