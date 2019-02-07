@@ -4,13 +4,14 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.junit.jupiter.api.Test;
+
 public class ConfigurationTest {
 
-	public static void main(String[] args) {
+	@Test
+	public void loadDefaultConfig() {
 		Configuration c1 = new Configuration();
-		System.out.println(c1.getConfigurationFile());
 		File f1 = new File(c1.getConfigurationFile().toString());
-		System.out.println(f1.exists());
-		
+		assert f1.exists();
 	}
 }

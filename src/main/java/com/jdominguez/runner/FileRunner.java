@@ -72,7 +72,7 @@ public class FileRunner extends Thread{
 	private void processDirectory(File parent){
 		process.preProcessDirectory(parent);
 
-		if(!properties.isRecursive())
+		if(properties.isRecursive())
 			if(parent.listFiles() != null) 
 				for(File children : parent.listFiles())
 					processArchive(children);

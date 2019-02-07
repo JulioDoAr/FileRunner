@@ -28,7 +28,7 @@ public class StringUtils {
 	 */
 	public static boolean inContained(String input, String[] list) {
 		for (String word : list) {
-			if (word.contains(input)) {
+			if (input.contains(word)) {
 				return true;
 			}
 		}

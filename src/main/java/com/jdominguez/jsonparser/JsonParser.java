@@ -42,26 +42,4 @@ public class JsonParser {
 	public void saveProperties(FileProcessProperties[] properties) throws JsonGenerationException, JsonMappingException, IOException {
 		mapper.writerWithDefaultPrettyPrinter().writeValue(configuration.getConfigurationFile(), properties);
 	}
-//	
-//	/** 
-//	 * Create a new instance of clazz from the json in the directory path ({@link JsonParser.DIRECTORY_PATH})
-//	 * @param clazz Class type of the new instance
-//	 * @return A new instance of the class from the resource
-//	 * @throws IOException
-//	 */
-//	public <T> T toObject(Class<T> clazz) throws IOException {
-//		URL url = getClass().getClassLoader().getResource(StringUtils.format(DIRECTORY_PATH, clazz.getSimpleName()));
-//		return  mapper.readValue(url, clazz);
-//	}
-//	/**
-//	 * Save an object in format JSON in the directory path ({@link JsonParser.DIRECTORY_PATH})
-//	 * @param object Object to save as JSON
-//	 * @throws IOException
-//	 * @throws URISyntaxException
-//	 */
-//	public void toJson(Object object)  throws IOException, URISyntaxException {
-//		URL url = getClass().getClassLoader().getResource(StringUtils.format(DIRECTORY_PATH, object.getClass().getSimpleName()));
-//		
-//		mapper.writerWithDefaultPrettyPrinter().writeValue(new File(url.getFile()), object);
-//	}
 }
