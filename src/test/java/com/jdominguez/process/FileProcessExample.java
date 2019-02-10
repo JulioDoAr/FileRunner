@@ -26,6 +26,7 @@ public class FileProcessExample extends FileProcess {
 	}
 	@Override
 	public void finallyProcess() {
+		System.out.println(" Proceso finalizado.");
 	}
 
 }

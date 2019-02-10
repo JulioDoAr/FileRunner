@@ -8,6 +8,14 @@ public class FileProcessProperties {
 	private String[] ignoredPatterns;
 	private boolean recursive;
 	
+	public FileProcessProperties() {
+		name = "";
+		clazz = "";
+		rootFiles = new String[0];
+		ignoredPatterns = new String[0];
+		recursive = false;
+	}
+	
 	public String[] getIgnoredPatterns() {
 		return ignoredPatterns;
 	}

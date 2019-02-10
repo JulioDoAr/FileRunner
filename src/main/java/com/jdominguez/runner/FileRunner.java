@@ -53,7 +53,11 @@ public class FileRunner extends Thread{
 	private void processURL(String url) {
 		File mainFile = new File(url);
 		if(mainFile.exists()){
-			processArchive(mainFile);
+			if(mainFile.isDirectory())
+			for(File children : mainFile.listFiles())
+				processArchive(children);
+			else 
+				processArchive(mainFile);
 			process.finallyProcess();
 		} else {
 			System.out.println("The url " + url + " doesn't exist");
@@ -63,11 +67,11 @@ public class FileRunner extends Thread{
 		if(isExcluded(file))
 			return;
 
-		if(file.isFile()){
+		if(file.isFile())
 			processFile(file);
-		} else{
+		 else
 			processDirectory(file);
-		}
+		
 	}
 	private void processDirectory(File parent){
 		process.preProcessDirectory(parent);

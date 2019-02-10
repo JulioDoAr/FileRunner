@@ -20,9 +20,4 @@
   "rootFiles" : [ "C:\\Users\\julio\\Documents\\workspaceSTS\\FileRunner\\src" ],
   "ignoredPatterns" : [ ".json" ],
   "recursive" : true
-}, {
-  "name" : "withoutClass",
-  "rootFiles" : [ "C:\\Users\\julio\\Documents\\workspaceSTS\\FileRunner\\src" ],
-  "ignoredPatterns" : [ ".json" ],
-  "recursive" : true
 } ]

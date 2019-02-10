@@ -1,17 +1,24 @@
 package com.jdominguez.configuration;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class ConfigurationTest {
 
 	@Test
-	public void loadDefaultConfig() {
-		Configuration c1 = new Configuration();
-		File f1 = new File(c1.getConfigurationFile().toString());
-		assert f1.exists();
+	public void loadDefaultconfig() {
+		Configuration conf = new Configuration();
+		assert conf.getConfigurationFile().exists() : "File does not exist";
+	}
+	
+	@Test
+	public void loadExternalUserconfig() {
+		Configuration conf = new Configuration("C:/Users/julio/Documents/workspaceSTS/FileRunner/src/test/resources/processes.json");
+		assert conf.getConfigurationFile().exists() : "File does not exist";
+	}
+
+	@Test
+	public void loadInternalUserconfig() {
+		Configuration conf = new Configuration("classpath:internaluserconfig/processes.json");
+		assert conf.getConfigurationFile().exists() : "File does not exist";
 	}
 }

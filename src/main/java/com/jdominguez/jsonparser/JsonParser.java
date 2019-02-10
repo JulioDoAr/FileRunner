@@ -1,9 +1,6 @@
 package com.jdominguez.jsonparser;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -12,12 +9,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.jdominguez.configuration.Configuration;
 import com.jdominguez.process.FileProcessProperties;
-import com.jdominguez.utils.StringUtils;
 
 /**
  * Resource manager
  * @author jdominguez
- *
  */
 public class JsonParser {
 
