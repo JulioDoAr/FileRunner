@@ -1,22 +1,18 @@
 [ {
-  "name" : "defaultConfig",
-  "clazz" : "",
-  "rootFiles" : [],
-  "ignoredPatterns" : [],
-  "recursive" : false
+  "name" : "defaultConfig"
 }, {
-  "name" : "proceso1",
-  "clazz" : "com.jdominguez.process.FileProcessExample",
+  "name" : "complete",
+  "clazz" : "e2e.FileProcessExample",
   "rootFiles" : [ "C:\\Users\\julio\\Documents\\workspaceSTS\\FileRunner\\src" ],
   "ignoredPatterns" : [],
   "recursive" : true
 }, {
-  "name" : "proceso2",
-  "clazz" : "com.jdominguez.process.FileProcessExample",
+  "name" : "withoutIgnoredRecursive",
+  "clazz" : "e2e.FileProcessExample",
   "rootFiles" : [ "C:\\Users\\julio\\Documents\\workspaceSTS\\FileRunner\\src" ]
 }, {
-  "name" : "proceso3",
-  "clazz" : "com.jdominguez.process.FileProcessExample",
+  "name" : "withIgnored",
+  "clazz" : "e2e.FileProcessExample",
   "rootFiles" : [ "C:\\Users\\julio\\Documents\\workspaceSTS\\FileRunner\\src" ],
   "ignoredPatterns" : [ ".json" ],
   "recursive" : true

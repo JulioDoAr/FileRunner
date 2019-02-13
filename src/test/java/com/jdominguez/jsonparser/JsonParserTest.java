@@ -2,40 +2,50 @@ package com.jdominguez.jsonparser;
 
 import java.io.IOException;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.jdominguez.configuration.Configuration;
 import com.jdominguez.process.FileProcessProperties;
 
 public class JsonParserTest {
 
-	public static void main(String[] args) {
-		Configuration conf = new Configuration();
-		JsonParser parser = new JsonParser(conf);
-		
-		try {
-			parser.loadProperties("proceso1");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	private static final String PROCESS_COMPLETE = "complete";
+	private static final String PROCESS_DEFAULT = "defaultConfig";
+	private static final String PROCESS_NON_EXIST = "procesoInexistente";
+
+	Configuration conf;
+
+	@Before
+	public void before() {
+		conf = new Configuration();
 	}
-	
-	private void testEscribir() {
-		Configuration conf = new Configuration();
+
+	@Test
+	public void loadProcess() throws JsonParseException, JsonMappingException, IOException {
 		JsonParser parser = new JsonParser(conf);
-		
-		FileProcessProperties[] properties = new FileProcessProperties[3];
-		for (int i = 0; i < properties.length; i++) {
-			FileProcessProperties prop = new FileProcessProperties();
-			prop.setName("proceso1");
-			prop.setClazz("");
-			prop.setIgnoredPatterns(new String[] {"bl1", "bl2"});
-			properties[i] = prop;
-		}
-		
-		System.out.println("Escribiendo fichero " + conf.getConfigurationFile().getAbsolutePath() + " exist: " + conf.getConfigurationFile().exists());
-		try {
-			parser.saveProperties(properties);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
+		FileProcessProperties fpp = null;
+		fpp = parser.loadProperties(PROCESS_COMPLETE);
+		assert fpp != null : "Ha fallado la carga del proceso";
+	}
+
+	@Test
+	public void loadNullIfProcessNotExist() throws JsonParseException, JsonMappingException, IOException {
+		JsonParser parser = new JsonParser(conf);
+		FileProcessProperties fpp = null;
+		fpp = parser.loadProperties(PROCESS_NON_EXIST);
+		assert fpp == null : "Ha cargado un proceso inexistente?";
+	}
+
+	@Test
+	public void loadDefaultConfig() throws JsonParseException, JsonMappingException, IOException {
+		JsonParser parser = new JsonParser(conf);
+		FileProcessProperties fpp = null;
+		fpp = parser.loadProperties(PROCESS_DEFAULT);
+		if (fpp == null || fpp.getClazz() == null || fpp.getIgnoredPatterns() == null || fpp.getName() == null
+				|| fpp.getRootFiles() == null)
+			assert false : "Al cargar por defecto, algo va a null";
 	}
 }

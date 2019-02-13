@@ -1,7 +1,9 @@
-package com.jdominguez.process;
+package e2e;
 
 import java.io.File;
 import java.util.Collections;
+
+import com.jdominguez.process.FileProcess;
 
 public class FileProcessExample extends FileProcess {
 	

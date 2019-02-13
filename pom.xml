@@ -5,7 +5,7 @@
 
 	<groupId>com.jdominguez</groupId>
 	<artifactId>FileRunner</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 
 	<properties>
 		<maven.compiler.source>1.5</maven.compiler.source>

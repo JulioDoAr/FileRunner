@@ -6,7 +6,7 @@ import java.net.URL;
 public class Configuration {
 	
 	private static final String DEFAULT_FILE_NAME = "processes.json";
-	private static final String CLASSPATH_IDENTIFIER = "classpath:";
+	private static final String CLASSPATH = "classpath:";
 
 	private File configurationFile;
 	
@@ -15,8 +15,8 @@ public class Configuration {
 	}
 	
 	public Configuration(String url) {
-		if(url.startsWith(CLASSPATH_IDENTIFIER)) {
-			url = url.replace("CLASSPATH_IDENTIFIER", "");
+		if(url.startsWith(CLASSPATH)) {
+			url = url.replace(CLASSPATH, "");
 			this.configurationFile = new File(this.getClass().getClassLoader().getResource(url).getFile());
 		} else
 			this.configurationFile = new File(url);

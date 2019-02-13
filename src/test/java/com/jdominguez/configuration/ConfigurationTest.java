@@ -4,6 +4,9 @@ import org.junit.Test;
 
 public class ConfigurationTest {
 
+	private static final String EXTERNAL_CONFIG = "C:/Users/Usuario/Entornos/workspace_sts/FileRunner/src/test/resources/processes.json";
+	private static final String INTERNAL_CONFIG = "classpath:internaluserconfig/processes.json";
+	
 	@Test
 	public void loadDefaultconfig() {
 		Configuration conf = new Configuration();
@@ -12,13 +15,13 @@ public class ConfigurationTest {
 	
 	@Test
 	public void loadExternalUserconfig() {
-		Configuration conf = new Configuration("C:/Users/julio/Documents/workspaceSTS/FileRunner/src/test/resources/processes.json");
+		Configuration conf = new Configuration(EXTERNAL_CONFIG);
 		assert conf.getConfigurationFile().exists() : "File does not exist";
 	}
 
 	@Test
 	public void loadInternalUserconfig() {
-		Configuration conf = new Configuration("classpath:internaluserconfig/processes.json");
+		Configuration conf = new Configuration(INTERNAL_CONFIG);
 		assert conf.getConfigurationFile().exists() : "File does not exist";
 	}
 }

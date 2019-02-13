@@ -18,20 +18,20 @@ public abstract class FileProcess {
 	 * Method that will be executed BEFORE start to process each directory
 	 * @param file The file to process
 	 */
-	public abstract void preProcessDirectory(File file);
+	public void preProcessDirectory(File file) {}
 	/**
 	 * Method that will be executed for each file
 	 * @param file The file to process
 	 */
-	public abstract void processFile(File file);
+	public void processFile(File file) {}
 	/**
 	 * Method that will be executed AFTER start to process each directory
 	 * @param file The file to process
 	 */
-	public abstract void postProcessDirectory(File file);
+	public void postProcessDirectory(File file) {}
 	/**
 	 * Method that will be executed to finalize the process
 	 */
-	public abstract void finallyProcess();
+	public void finallyProcess() {}
 
 }
