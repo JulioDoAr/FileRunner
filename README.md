@@ -4,7 +4,7 @@ Java library that helps you to create a recursive processes around a directory h
 2. [Example project](EXAMPLE.md)
 
 # How to use
-We will have to do 4 steps:
+We will have to do 3 steps:
 1. Create the "Process" class.
 2. Create the configuration file.
 3. Run our process.
