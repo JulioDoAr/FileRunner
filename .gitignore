@@ -32,3 +32,6 @@ bin
 # Other
 *.swp
 *.bak
+.README.md.html
+.GUIDE.md.html
+.EXAMPLE.md.html
