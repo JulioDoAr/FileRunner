@@ -11,7 +11,7 @@ We will have to do 3 steps:
 
 ### Creating our Process
 We need to create a class that extends from ``com.jdominguez.process.FileProcess`` to consider it a "Process".
-This class let you override 4 methods:
+This class let you override 3 methods:
 
 ```java
 /**
