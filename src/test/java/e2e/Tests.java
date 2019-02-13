@@ -9,21 +9,21 @@ public class Tests {
 	
 	@Test
 	public void e2e_Full() {
-		FileRunnerExecutor.executeProcess("proceso1");
+		FileRunnerExecutor.executeProcess("complete");
 	}
 
 	@Test
 	public void e2e_WithoutIgnoredPatterns() {
-		FileRunnerExecutor.executeProcess("proceso2");
+		FileRunnerExecutor.executeProcess("withoutIgnoredRecursive");
 	}
 
 	@Test
 	public void e2e_WithIgnorePattern() {
-		FileRunnerExecutor.executeProcess("proceso3");
+		FileRunnerExecutor.executeProcess("withIgnored");
 	}
 
 	@Test
 	public void e2e_NameNotFound() {
-		FileRunnerExecutor.executeProcess("nameNotFound");
+		FileRunnerExecutor.executeProcess("withoutClass");
 	}
 }
